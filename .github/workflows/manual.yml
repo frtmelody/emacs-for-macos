@@ -21,7 +21,7 @@ jobs:
   tests:
     runs-on: macos-latest
     steps:
-    - run /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    - run brew bundle
-    - run ./build-emacs-for-macos master --native-comp --native-full-aot  --no-titlebar
+    - run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    - run: brew bundle
+    - run: ./build-emacs-for-macos master --native-comp --native-full-aot  --no-titlebar
     - run: echo OK
