@@ -21,7 +21,15 @@ jobs:
   tests:
     runs-on: macos-latest
     steps:
-    # - run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    - uses: actions/checkout@v2
+
     - run: brew bundle
-    - run: ./build-emacs-for-macos master --native-comp --native-full-aot  --no-titlebar
+    - run: ./build-emacs-for-macos master --native-comp --native-full-aot  --no-titlebar --build-name Emacs
+    - name: "build macos emacs Release"
+      uses: actions/create-release@v1.1.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # - run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+      with:
+        body_path: builds/Emacs.tbz
     - run: echo OK
