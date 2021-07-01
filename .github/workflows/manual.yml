@@ -26,7 +26,7 @@ jobs:
     - run: brew bundle
     - run: ./build-emacs-for-macos master --native-comp --native-full-aot  --no-titlebar --build-name Emacs
     - name: "build macos emacs Release"
-    - uses: actions/create-release@v1.1.1
+      uses: actions/create-release@v1.1.1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     # - run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
